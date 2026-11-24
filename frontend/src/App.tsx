@@ -24,8 +24,7 @@ function App() {
     void reload()
   }, [reload])
 
-  function handleCreated(book: Book) {
-    setBooks((current) => [...current, book].sort((a, b) => a.title.localeCompare(b.title)))
+  function handleCreated() {
     void reload()
   }
 

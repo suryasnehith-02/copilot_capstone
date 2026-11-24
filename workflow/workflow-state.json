@@ -11,7 +11,7 @@
     { "id": "design-review", "status": "approved", "deliverable": "docs/design-review.md", "approvedByUser": true },
     { "id": "implementation-planning", "status": "approved", "deliverable": "docs/impl-plan.md", "approvedByUser": true },
     { "id": "implementation", "status": "pending", "deliverable": null, "approvedByUser": false },
-    { "id": "code-review", "status": "pending", "deliverable": "docs/code-review.md", "approvedByUser": false },
+    { "id": "code-review", "status": "completed", "deliverable": "docs/code-review.md", "approvedByUser": true },
     { "id": "verification", "status": "pending", "deliverable": "docs/verification-report.md", "approvedByUser": false },
     { "id": "pull-request", "status": "pending", "deliverable": null, "approvedByUser": false }
   ],
@@ -23,7 +23,9 @@
     { "id": "D-004", "decision": "Stack: Spring Boot 3.x backend (Java 21, Maven, Spring Web, Spring Data JPA, Flyway, H2 file DB) and React + TypeScript + Vite frontend.", "approvedByUser": true },
     { "id": "D-003", "decision": "MCP servers configured in workspace-root .mcp.json: atlassian (Jira and Confluence, https://mcp.atlassian.com/v2/mcp) and github (https://api.githubcopilot.com/mcp/), read-only, OAuth sign-in, no secrets in files.", "approvedByUser": true },
     { "id": "D-005", "decision": "docs/architecture.md approved by user; Stage 2 complete. Next stage: Design Review.", "approvedByUser": true },
-    { "id": "D-006", "decision": "Design Review approved by user: DR-01 unique author names (case-insensitive, 409); DR-02 single POST /books with inline newAuthor in one transaction; DR-03 optimistic locking (version, 409); DR-04 Spring Boot serves React build (no CORS); DR-05 bind to localhost, no auth as accepted risk; DR-06 to DR-14 applied. Stage 3 complete. Next stage: Implementation Planning.", "approvedByUser": true}
+    { "id": "D-006", "decision": "Design Review approved by user: DR-01 unique author names (case-insensitive, 409); DR-02 single POST /books with inline newAuthor in one transaction; DR-03 optimistic locking (version, 409); DR-04 Spring Boot serves React build (no CORS); DR-05 bind to localhost, no auth as accepted risk; DR-06 to DR-14 applied. Stage 3 complete. Next stage: Implementation Planning.", "approvedByUser": true },
+    { "id": "D-007", "decision": "Hand-written Spring Boot 3.5.16 pom.xml because Spring Initializr returned HTTP 400 for 3.x; static UI build output git-ignored; HTTP 405 mapped to VALIDATION_ERROR (confirmed by user in code review F-09).", "approvedByUser": true },
+    { "id": "D-008", "decision": "Code review resolutions, user authorized: F-01 ISBN format check removed to match A-04 (length limit kept); F-06 client sort removed, list uses server order after reload; F-09 405 mapping confirmed. Decided on the user's behalf and can be reversed. E2E 3 of 3 passed against the updated code.", "approvedByUser": true }
   ],
   "implementationTasks": [
     { "id": "T-001", "title": "Scaffold the Spring Boot project", "status": "done", "dependsOn": [] },

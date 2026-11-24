@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { ApiError, updateAvailability } from '../api/client'
 import type { Book } from '../api/types'
+import { MAX_AVAILABLE_COPIES } from '../constants'
 
 interface BookListProps {
   books: Book[]
@@ -8,7 +9,6 @@ interface BookListProps {
   onReload: () => void
 }
 
-const MAX_COPIES = 1000000
 const STALE_NOTICE = 'This book was changed by someone else. The list has been reloaded; try again.'
 
 interface RowProps {
@@ -25,7 +25,7 @@ function BookRow({ book, onUpdated, onStale }: RowProps) {
   async function save() {
     setError(null)
     const value = Number(copies)
-    if (copies.trim() === '' || !Number.isInteger(value) || value < 0 || value > MAX_COPIES) {
+    if (copies.trim() === '' || !Number.isInteger(value) || value < 0 || value > MAX_AVAILABLE_COPIES) {
       setError('Available copies must be a whole number from 0 to 1000000.')
       return
     }
@@ -54,15 +54,16 @@ function BookRow({ book, onUpdated, onStale }: RowProps) {
           id={`copies-${book.id}`}
           type="number"
           min={0}
-          max={MAX_COPIES}
+          max={MAX_AVAILABLE_COPIES}
           value={copies}
           onChange={(e) => setCopies(e.target.value)}
           aria-invalid={!!error}
+          aria-describedby={error ? `copies-error-${book.id}` : undefined}
         />
         <button type="button" onClick={save} disabled={saving}>
           Save copies
         </button>
-        {error && <p role="alert">{error}</p>}
+        {error && <p id={`copies-error-${book.id}`} role="alert">{error}</p>}
       </td>
     </tr>
   )

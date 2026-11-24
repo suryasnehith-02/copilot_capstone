@@ -131,4 +131,20 @@ class BookApiTests {
         mvc.perform(post("/api/books").contentType("text/plain").content("title=Dune"))
                 .andExpect(status().isUnsupportedMediaType());
     }
+
+    @Test
+    void returnsNotFoundWhenAuthorIdDoesNotExist() throws Exception {
+        mvc.perform(post("/api/books").contentType("application/json")
+                        .content("{\"title\":\"Orphan\",\"authorId\":999999}"))
+                .andExpect(status().isNotFound())
+                .andExpect(jsonPath("$.error.code", is("NOT_FOUND")));
+    }
+
+    @Test
+    void rejectsNegativeAvailableCopiesOnCreate() throws Exception {
+        mvc.perform(post("/api/books").contentType("application/json")
+                        .content("{\"title\":\"Negative\",\"availableCopies\":-1,\"newAuthor\":{\"name\":\"Neg Author\"}}"))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.error.code", is("VALIDATION_ERROR")));
+    }
 }
