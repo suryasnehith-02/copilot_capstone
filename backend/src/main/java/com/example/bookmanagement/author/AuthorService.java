@@ -1,7 +1,6 @@
 package com.example.bookmanagement.author;
 
 import com.example.bookmanagement.error.ConflictException;
-import com.example.bookmanagement.error.NotFoundException;
 import java.util.List;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
@@ -28,11 +27,5 @@ public class AuthorService {
     @Transactional(readOnly = true)
     public List<Author> listAuthors() {
         return authorRepository.findAll(Sort.by("name"));
-    }
-
-    @Transactional(readOnly = true)
-    public Author getAuthor(Long id) {
-        return authorRepository.findById(id)
-                .orElseThrow(() -> new NotFoundException("Author " + id + " was not found"));
     }
 }

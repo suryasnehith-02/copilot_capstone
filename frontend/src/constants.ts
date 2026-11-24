@@ -1,0 +1,1 @@
+export const MAX_AVAILABLE_COPIES = 1000000

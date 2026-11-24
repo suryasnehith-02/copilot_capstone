@@ -5,7 +5,6 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
 public record CreateBookRequest(
@@ -14,11 +13,10 @@ public record CreateBookRequest(
         String title,
 
         @Size(max = 20, message = "must be at most 20 characters")
-        @Pattern(regexp = "^[0-9Xx-]*$", message = "may contain only digits, hyphens, and X")
         String isbn,
 
         @Min(value = 0, message = "must be 0 or greater")
-        @Max(value = 1000000, message = "must be at most 1000000")
+        @Max(value = BookLimits.MAX_AVAILABLE_COPIES, message = "must be at most 1000000")
         Integer availableCopies,
 
         Long authorId,

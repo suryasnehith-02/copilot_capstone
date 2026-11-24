@@ -6,7 +6,7 @@ Scope: the Book Management System (tasks T-001 to T-024 in [impl-plan.md](./impl
 
 | Area | Command | Result |
 | --- | --- | --- |
-| Backend unit and API tests | `mvn test` (in `backend/`) | 14 run, 0 failures, 0 errors. BUILD SUCCESS |
+| Backend unit and API tests | `mvn test` (in `backend/`) | 16 run, 0 failures, 0 errors. BUILD SUCCESS |
 | Backend persistence | `BookPersistenceTests` (within the run above) | 1 run, passed |
 | Frontend unit tests | `npm run test` (in `frontend/`) | 7 of 7 passed |
 | Frontend lint | `npm run lint` | 0 errors, 1 warning (see Known Issues) |
@@ -17,7 +17,7 @@ Scope: the Book Management System (tasks T-001 to T-024 in [impl-plan.md](./impl
 ## Backend Test Breakdown
 
 - `AuthorApiTests`: 3 tests
-- `BookApiTests`: 9 tests, including rollback when the book save fails, malformed JSON (400), and unsupported media type (415)
+- `BookApiTests`: 11 tests, including unknown author (404), negative copies on create (400), rollback when the book save fails, malformed JSON (400), and unsupported media type (415)
 - `BookPersistenceTests`: 1 test. It writes a book, updates its copies, closes the Spring context, starts a new context on the same file-backed H2 database, and reads the data back (covers the persistence requirement in T-016)
 - `BookManagementApplicationTests`: 1 context-load test
 
@@ -40,7 +40,7 @@ The Mockito self-attach warning in the test output is informational and does not
 - **Unconfirmed decisions:**
   - The Spring Boot version is 3.5.16 in a hand-written `pom.xml`, because Spring Initializr returned HTTP 400 for every 3.x version.
   - The static UI build output (`backend/src/main/resources/static/`) is git-ignored.
-  - HTTP 405 maps to `VALIDATION_ERROR`.
+  - HTTP 405 maps to `VALIDATION_ERROR` (confirmed in the code review, F-09; the user chose to keep it).
 
 ## Not Executed
 
