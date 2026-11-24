@@ -1,0 +1,30 @@
+{
+  "project": {
+    "name": "Book Management System",
+    "techStack": "Spring Boot 3.x (Java 21, Maven, JPA, Flyway, H2 file DB) backend; React + TypeScript + Vite frontend",
+    "techStackApproved": true
+  },
+  "currentStage": "design-review",
+  "stages": [
+    { "id": "requirements", "status": "approved", "deliverable": "docs/requirements.md", "approvedByUser": true },
+    { "id": "architecture", "status": "approved", "deliverable": "docs/architecture.md", "approvedByUser": true },
+    { "id": "design-review", "status": "pending", "deliverable": "docs/design-review.md", "approvedByUser": false },
+    { "id": "implementation-planning", "status": "pending", "deliverable": "docs/impl-plan.md", "approvedByUser": false },
+    { "id": "implementation", "status": "pending", "deliverable": null, "approvedByUser": false },
+    { "id": "code-review", "status": "pending", "deliverable": "docs/code-review.md", "approvedByUser": false },
+    { "id": "verification", "status": "pending", "deliverable": "docs/verification-report.md", "approvedByUser": false },
+    { "id": "pull-request", "status": "pending", "deliverable": null, "approvedByUser": false }
+  ],
+  "planApprovedByUser": true,
+  "openQuestions": [],
+  "decisions": [
+    { "id": "D-001", "decision": "Git repository initialized locally; no remote configured.", "approvedByUser": true },
+    { "id": "D-002", "decision": "Technology stack to be recommended by the Architecture specialist and approved by the user.", "approvedByUser": true },
+    { "id": "D-004", "decision": "Stack: Spring Boot 3.x backend (Java 21, Maven, Spring Web, Spring Data JPA, Flyway, H2 file DB) and React + TypeScript + Vite frontend.", "approvedByUser": true },
+    { "id": "D-003", "decision": "MCP servers configured in workspace-root .mcp.json: atlassian (Jira and Confluence, https://mcp.atlassian.com/v2/mcp) and github (https://api.githubcopilot.com/mcp/), read-only, OAuth sign-in, no secrets in files.", "approvedByUser": true },
+    { "id": "D-005", "decision": "docs/architecture.md approved by user; Stage 2 complete. Next stage: Design Review.", "approvedByUser": true }
+  ],
+  "implementationTasks": [],
+  "verification": { "status": "not-started", "reportPath": "docs/verification-report.md" },
+  "pullRequest": { "url": null, "number": null, "created": false, "merged": false }
+}
