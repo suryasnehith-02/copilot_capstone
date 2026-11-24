@@ -1,0 +1,23 @@
+server:
+  address: ${SERVER_ADDRESS:localhost}
+  port: ${SERVER_PORT:8080}
+
+spring:
+  application:
+    name: bookmanagement
+  datasource:
+    url: ${H2_URL:jdbc:h2:file:./data/bookmanagement}
+    username: sa
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+  flyway:
+    enabled: true
+  h2:
+    console:
+      enabled: false
+
+logging:
+  level:
+    com.example.bookmanagement: ${LOG_LEVEL:INFO}

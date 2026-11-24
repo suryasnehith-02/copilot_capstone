@@ -34,3 +34,24 @@ No tokens are stored in the repo. To connect:
 4. Verify with a read-only prompt, for example "List my Jira projects" or "List the branches in this repo". Confirm that the tool call appears in the chat output.
 
 Do not put tokens or API keys in `.mcp.json`. For the `.vscode/mcp.json` format, see the deprecated Local harness notes; this project does not use it.
+
+## Book Management System
+
+Backend: Spring Boot 3.5 (Java 21) in `backend/`. Frontend: React + TypeScript + Vite in `frontend/`.
+
+Features: add books, add authors, and track book availability (copies).
+
+### Run
+
+1. Build the UI into the backend static folder: `cd frontend` then `npm run build`.
+2. Start the backend: `cd backend` then `mvn spring-boot:run`. The app listens on `http://localhost:8080` (bound to localhost only) and serves the UI at `/`.
+3. For UI development with hot reload, run `npm run dev` in `frontend/`. Its dev server proxies `/api` to port 8080, so run the backend too.
+
+The dev profile stores data in an H2 file at `./data/bookmanagement` relative to the working directory. Delete the `data/` folder to reset the database.
+
+### Test
+
+- Backend: `cd backend` then `mvn test`.
+- Frontend unit tests: `cd frontend` then `npm run test`.
+- Frontend E2E (Playwright): start the backend, then `cd frontend` and `npm run e2e`. Install the browser once with `npx playwright install chromium`.
+- Lint: `cd frontend` then `npm run lint`.
