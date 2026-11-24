@@ -54,5 +54,5 @@
     { "id": "T-024", "title": "Run the full verification pass", "status": "done", "dependsOn": ["T-013", "T-014", "T-015", "T-016", "T-017", "T-018", "T-019", "T-020", "T-021", "T-022", "T-023"] }
   ],
   "verification": { "status": "completed", "reportPath": "docs/verification-report.md" },
-  "pullRequest": { "url": null, "number": null, "created": false, "merged": false }
+  "pullRequest": { "url": "https://github.com/suryasnehith-02/copilot_capstone/pull/1", "number": 1, "created": true, "merged": true }
 }
